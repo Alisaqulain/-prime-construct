@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { X } from "lucide-react";
+import Image from "next/image";
 import { galleryItems } from "@/lib/data";
 
-const categories = ["All", "Projects", "Materials", "Work Sites"] as const;
+const categories = ["All", "Before", "After", "Application"] as const;
 
 export default function GalleryPage() {
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
@@ -18,7 +19,7 @@ export default function GalleryPage() {
   return (
     <section className="section-shell py-24">
       <h1 className="text-4xl font-bold">Project Gallery</h1>
-      <p className="mt-3 text-white/75">A visual showcase of our projects, materials, and job sites.</p>
+      <p className="mt-3 text-white/75">Before/after transformations and live gypsum application snapshots.</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
         {categories.map((cat) => (
@@ -37,7 +38,7 @@ export default function GalleryPage() {
       <div className="mt-8 columns-1 gap-4 space-y-4 md:columns-3">
         {items.map((item) => (
           <button key={item.title} onClick={() => setActiveImage(item.image)} className="w-full overflow-hidden rounded-xl border border-white/10">
-            <img src={item.image} alt={item.title} className="w-full object-cover" />
+            <Image src={item.image} alt={item.title} width={600} height={420} className="w-full object-cover" />
           </button>
         ))}
       </div>
@@ -47,7 +48,7 @@ export default function GalleryPage() {
           <button className="absolute right-6 top-6 text-white" onClick={() => setActiveImage(null)}>
             <X />
           </button>
-          <img src={activeImage} alt="Gallery preview" className="max-h-[90vh] w-auto rounded-xl" />
+          <Image src={activeImage} alt="Gallery preview" width={1200} height={800} className="max-h-[90vh] w-auto rounded-xl object-contain" />
         </div>
       )}
     </section>

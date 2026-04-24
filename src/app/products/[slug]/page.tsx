@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { products } from "@/lib/data";
 
@@ -21,13 +22,17 @@ export default async function ProductDetailsPage({
     <section className="section-shell py-24">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="space-y-4">
-          <img src={product.image} alt={product.title} className="h-80 w-full rounded-2xl object-cover" />
+          <div className="relative h-80 w-full">
+            <Image src={product.image} alt={product.title} fill className="rounded-2xl object-cover" sizes="(max-width:768px) 100vw, 50vw" />
+          </div>
           <div className="grid grid-cols-3 gap-3">
             {[1, 2, 3].map((item) => (
-              <img
+              <Image
                 key={item}
                 src={product.image}
                 alt={`${product.title} gallery ${item}`}
+                width={280}
+                height={180}
                 className="h-24 w-full rounded-xl object-cover"
               />
             ))}
@@ -37,9 +42,9 @@ export default async function ProductDetailsPage({
           <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">{product.category}</p>
           <h1 className="mt-2 text-4xl font-bold">{product.title}</h1>
           <p className="mt-4 text-white/80">{product.description}</p>
-          <h2 className="mt-6 text-xl font-semibold">Specifications</h2>
+          <h2 className="mt-6 text-xl font-semibold">Benefits</h2>
           <ul className="mt-3 space-y-2 text-sm text-white/80">
-            {product.specs.map((spec) => (
+            {product.benefits.map((spec) => (
               <li key={spec} className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
                 {spec}
               </li>

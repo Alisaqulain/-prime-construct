@@ -33,6 +33,8 @@ export default function ContactPage() {
           <input required name="name" placeholder="Your Name" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
           <input required name="email" type="email" placeholder="Email" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
           <input name="company" placeholder="Company" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
+          <input name="phone" placeholder="Phone" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
+          <input name="projectType" placeholder="Project Type (Residential/Commercial)" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
           <textarea required name="message" placeholder="Tell us about your requirement" className="h-32 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
           <button className="rounded-full bg-[#D4AF37] px-6 py-2 font-semibold text-black">Send Message</button>
           {status ? <p className="text-sm text-white/80">{status}</p> : null}
@@ -42,7 +44,7 @@ export default function ContactPage() {
           <div className="glass-card p-6">
             <h2 className="text-xl font-semibold">Office</h2>
             <p className="mt-2 text-white/75">12 Skyline Industrial Avenue, Victoria Island, Lagos</p>
-            <p className="mt-2 text-white/75">+234 800 000 0000</p>
+            <p className="mt-2 text-white/75">+91 98765 43210</p>
             <p className="mt-2 text-white/75">hello@primeconstruct.com</p>
           </div>
           <iframe
@@ -60,7 +62,7 @@ export default function ContactPage() {
       </div>
 
       <Link
-        href="https://wa.me/2348000000000"
+        href="https://wa.me/919876543210"
         target="_blank"
         className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-black shadow-lg"
       >

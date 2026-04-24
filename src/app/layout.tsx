@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CursorGlow } from "@/components/cursor-glow";
 import { SiteBackground } from "@/components/site-background";
+import { StickyQuote } from "@/components/sticky-quote";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,15 +20,21 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://primeconstruct.example.com"),
   title: {
-    default: "PRIME CONSTRUCT | Premium Construction Solutions",
+    default: "PRIME CONSTRUCT | Finish Faster. Build Smarter.",
     template: "%s | PRIME CONSTRUCT",
   },
   description:
-    "PRIME CONSTRUCT delivers premium construction materials, equipment, and infrastructure supply solutions.",
+    "PRIME CONSTRUCT is the practitioner's choice for gypsum solutions in India. Build faster, save water, and deliver superior finish quality.",
+  keywords: [
+    "gypsum plaster India",
+    "gypsum vs cement plaster",
+    "plastering services",
+    "construction gypsum solutions",
+  ],
   openGraph: {
     title: "PRIME CONSTRUCT",
     description:
-      "Building dreams and supplying solutions with premium materials and modern project support.",
+      "Building dreams, supplying solutions with high-performance gypsum systems for modern construction.",
     type: "website",
     images: [
       {
@@ -59,6 +66,7 @@ export default function RootLayout({
         <div className="relative z-10">
           <SiteFooter />
         </div>
+        <StickyQuote />
       </body>
     </html>
   );

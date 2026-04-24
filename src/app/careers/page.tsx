@@ -42,7 +42,7 @@ export default function CareersPage() {
     <section className="section-shell py-24">
       <h1 className="text-4xl font-bold">Careers</h1>
       <p className="mt-3 max-w-2xl text-white/75">
-        Join a high-performance team building the future of construction supply and project delivery.
+        Join a high-performance team transforming how modern construction finishing is delivered.
       </p>
 
       <div className="mt-8 grid gap-4">
@@ -61,8 +61,8 @@ export default function CareersPage() {
         <div className="glass-card p-6">
           <h2 className="text-2xl font-semibold">Culture</h2>
           <p className="mt-3 text-white/75">
-            We value innovation, accountability, and excellence. Our teams work with autonomy,
-            clarity, and measurable impact across global projects.
+            We combine technical depth with execution speed. Teams own outcomes, solve field-level
+            problems, and build products and systems that contractors trust.
           </p>
         </div>
 

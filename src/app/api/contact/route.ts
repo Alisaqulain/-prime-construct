@@ -4,7 +4,8 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, company, message } = body;
+    const { name, email, company, phone, projectType, message } = body;
+    const leadId = `LEAD-${Date.now()}`;
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -30,12 +31,15 @@ export async function POST(req: Request) {
           <p><b>Name:</b> ${name}</p>
           <p><b>Email:</b> ${email}</p>
           <p><b>Company:</b> ${company ?? "-"}</p>
+          <p><b>Phone:</b> ${phone ?? "-"}</p>
+          <p><b>Project Type:</b> ${projectType ?? "-"}</p>
           <p><b>Message:</b> ${message}</p>
+          <p><b>Lead ID:</b> ${leadId}</p>
         `,
       });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, leadId });
   } catch {
     return NextResponse.json({ error: "Server error." }, { status: 500 });
   }

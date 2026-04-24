@@ -2,274 +2,222 @@ export type Product = {
   id: number;
   slug: string;
   title: string;
-  category: "Steel" | "Cement" | "Aggregates" | "Equipment";
+  category: "Base Coat" | "Finish Coat" | "Ceiling" | "Additives";
   description: string;
   image: string;
-  specs: string[];
+  benefits: string[];
 };
 
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Products", href: "/products" },
+  { label: "Calculator", href: "/calculator" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Sustainability", href: "/sustainability" },
   { label: "Careers", href: "/careers" },
-  { label: "Blog", href: "/blog" },
-  { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const services = [
+export const trustLogos = [
+  "L&T BuildTech",
+  "Shapoorji Developers",
+  "Sobha Interiors",
+  "BIM Studio India",
+  "Urban Frame Projects",
+  "K2 Contractors",
+];
+
+export const heroStats = [
+  { label: "Faster Execution", value: 50, suffix: "%" },
+  { label: "Dry Time", value: 72, suffix: "hr" },
+  { label: "Water Curing", value: 0, suffix: "" },
+];
+
+export const valueStack = [
   {
-    title: "Structural Engineering Supply",
-    description:
-      "Reliable premium-grade structural materials for commercial and industrial builds.",
+    title: "Smooth finish, no putty",
+    copy: "Superior finish quality reduces post-plaster rework and putty cost.",
   },
   {
-    title: "Bulk Material Distribution",
-    description:
-      "Fast and scalable logistics network delivering cement, steel, and aggregates on schedule.",
+    title: "Fast dry cycle",
+    copy: "72-hour dry time helps contractors hand over spaces faster.",
   },
   {
-    title: "Project Procurement Support",
-    description:
-      "Dedicated sourcing specialists helping teams reduce delay, cost, and supply risk.",
-  },
-  {
-    title: "Site Equipment Solutions",
-    description:
-      "Modern machinery and construction tools tailored to project scope and duration.",
+    title: "No water curing",
+    copy: "Cuts water consumption while lowering labor intensity at scale.",
   },
 ];
+
+export const targetAudience = ["Contractors", "Architects", "Interior Designers"];
 
 export const products: Product[] = [
   {
     id: 1,
-    slug: "ultra-strength-rebar",
-    title: "Ultra Strength Rebar",
-    category: "Steel",
-    description:
-      "High-tensile anti-corrosion reinforcement bars ideal for heavy-load infrastructure.",
+    slug: "prime-rapid-base",
+    title: "Prime Rapid Base",
+    category: "Base Coat",
+    description: "High-coverage gypsum base plaster for machine and manual application.",
     image:
-      "https://images.unsplash.com/photo-1626885930974-4b69aa21bbf2?auto=format&fit=crop&w=1200&q=80",
-    specs: ["Grade 500D", "Corrosion-resistant finish", "6mm to 32mm diameters"],
+      "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=1200&q=80",
+    benefits: ["Low shrinkage", "Fast setting", "Uniform wall thickness"],
   },
   {
     id: 2,
-    slug: "prime-bond-cement",
-    title: "PrimeBond Cement",
-    category: "Cement",
-    description:
-      "Performance cement blend engineered for superior bonding, durability, and curing speed.",
+    slug: "prime-silk-finish",
+    title: "Prime Silk Finish",
+    category: "Finish Coat",
+    description: "Ultra-fine finish layer delivering premium paint-ready surfaces.",
     image:
-      "https://images.unsplash.com/photo-1611293388250-580b08c4a145?auto=format&fit=crop&w=1200&q=80",
-    specs: ["53 Grade OPC", "Low heat hydration", "Moisture-protect packaging"],
+      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80",
+    benefits: ["Mirror smooth finish", "No putty required", "Crack resistance"],
   },
   {
     id: 3,
-    slug: "clean-crushed-aggregate",
-    title: "Clean Crushed Aggregate",
-    category: "Aggregates",
-    description:
-      "Washed and graded aggregate for robust roadwork foundations and concrete mixes.",
+    slug: "prime-ceiling-lite",
+    title: "Prime Ceiling Lite",
+    category: "Ceiling",
+    description: "Lightweight gypsum blend engineered for superior overhead bonding.",
     image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-    specs: ["10mm, 20mm, 40mm", "Dust-controlled", "Lab-tested consistency"],
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+    benefits: ["Low sag risk", "Easy spread", "Reduced dead load"],
   },
   {
     id: 4,
-    slug: "hydra-lift-excavator",
-    title: "HydraLift Excavator",
-    category: "Equipment",
-    description:
-      "Fuel-efficient heavy-duty excavator with precision hydraulic control for smart sites.",
+    slug: "prime-bond-admix",
+    title: "Prime Bond Admix",
+    category: "Additives",
+    description: "Performance additive to optimize workability and bond strength.",
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
-    specs: ["27-ton class", "Smart telemetry", "Low-emission compliant"],
-  },
-  {
-    id: 5,
-    slug: "galvanized-beam-series",
-    title: "Galvanized Beam Series",
-    category: "Steel",
-    description:
-      "Structural steel beams with zinc protection for high-lifespan commercial installations.",
-    image:
-      "https://images.unsplash.com/photo-1590261239431-2f3f4f98fcf7?auto=format&fit=crop&w=1200&q=80",
-    specs: ["I and H profiles", "Hot-dip galvanized", "Custom cut lengths"],
-  },
-  {
-    id: 6,
-    slug: "rapid-set-cement-plus",
-    title: "RapidSet Cement Plus",
-    category: "Cement",
-    description:
-      "Quick-setting cement optimized for deadline-driven developments and repair jobs.",
-    image:
-      "https://images.unsplash.com/photo-1607400201515-c2c41f1ef4cf?auto=format&fit=crop&w=1200&q=80",
-    specs: ["Fast cure profile", "Crack-minimizing blend", "High early strength"],
+      "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80",
+    benefits: ["Higher adhesion", "Longer open time", "Consistent finish quality"],
   },
 ];
 
-export const whyChooseUs = [
-  "20+ years of construction supply excellence",
-  "ISO-compliant quality and certified inventory",
-  "On-time deliveries backed by smart logistics",
-  "Dedicated account managers for enterprise clients",
+export const gypsumVsCement = [
+  { metric: "Drying Time", gypsum: "72 hours", cement: "7-14 days" },
+  { metric: "Water Curing", gypsum: "Not required", cement: "Required daily" },
+  { metric: "Finish Quality", gypsum: "Smooth, paint-ready", cement: "Needs putty and rework" },
+  { metric: "Labor Productivity", gypsum: "Higher output/day", cement: "Lower output/day" },
 ];
 
-export const stats = [
-  { label: "Projects Supported", value: 1250 },
-  { label: "Tons Delivered", value: 900000 },
-  { label: "Strategic Partners", value: 170 },
-  { label: "Countries Served", value: 14 },
+export const caseStudies = [
+  {
+    slug: "skyline-residences",
+    project: "Skyline Residences, Pune",
+    problem: "Wall finishing delays were pushing handover by 6 weeks.",
+    solution: "Shifted 1.8 lakh sq ft from cement plaster to Prime Rapid Base + Silk Finish.",
+    result: "Project recovered 34 days and saved INR 42 lakhs in labor + finishing.",
+    image:
+      "https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    slug: "vertex-it-park",
+    project: "Vertex IT Park, Hyderabad",
+    problem: "High water usage and repaint defects from uneven wall finish.",
+    solution: "Adopted gypsum system with process SOPs for all interior walls.",
+    result: "Cut water use by 61% and reduced snag list by 47% at final QA.",
+    image:
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export const testimonials = [
   {
-    name: "Rahul Menon",
-    role: "Project Director, Skyline Infra",
+    name: "Rohit Mehta",
+    role: "Project Head, Urban Grid Builders",
     quote:
-      "PRIME CONSTRUCT consistently delivers high-grade materials before schedule. They are a strategic partner, not just a vendor.",
+      "Prime Construct helped us compress our finishing cycle and protect our margin. Their gypsum system performs exactly as promised.",
   },
   {
-    name: "Sarah Adeyemi",
-    role: "Procurement Lead, Nova Build",
+    name: "Nidhi Kapoor",
+    role: "Principal Architect, NKA Studio",
     quote:
-      "From steel to site equipment, every order arrived with clear documentation and exceptional quality standards.",
+      "The finish quality is consistently premium. My clients notice smoother walls and faster possession.",
   },
-];
-
-export const clients = [
-  "Apex Housing",
-  "MetroSpan",
-  "Titan Infrastructure",
-  "BlueStone Projects",
-  "Urban Frame",
-  "Civitas Works",
 ];
 
 export const timeline = [
-  { year: "2005", detail: "Founded as a regional supplier for structural materials." },
-  { year: "2011", detail: "Expanded to multi-city distribution with dedicated logistics hubs." },
-  { year: "2017", detail: "Introduced smart inventory tracking and enterprise procurement support." },
-  { year: "2023", detail: "Became a trusted partner for mega infrastructure projects." },
+  { year: "2012", detail: "Founded with a mission to modernize wall finishing in India." },
+  { year: "2017", detail: "Built specialist contractor network and technical training wing." },
+  { year: "2021", detail: "Crossed 10M sq ft gypsum applications delivered." },
+  { year: "2025", detail: "Expanded into green-building consultation and lifecycle support." },
 ];
 
-export const team = [
-  { name: "Daniel Reyes", role: "Chief Executive Officer" },
-  { name: "Anika Sharma", role: "Head of Operations" },
-  { name: "Michael Osei", role: "Supply Chain Director" },
-  { name: "Lina Park", role: "Client Success Lead" },
+export const whyChoose = [
+  "Site-first technical support from practitioners, not just sales teams",
+  "Proven speed and finish outcomes across residential and commercial projects",
+  "Predictable costing framework with transparent ROI estimates",
+  "Sustainability-first systems aligned with LEED and IGBC pathways",
 ];
 
-export const certifications = [
-  "ISO 9001:2015 Quality Management",
-  "ISO 14001:2015 Environmental Management",
-  "OHSAS 18001 Safety Compliance",
+export const sustainabilityHighlights = [
+  "No water curing requirement reduces freshwater dependency significantly.",
+  "Lower embodied energy than conventional wet plaster workflows.",
+  "Cleaner execution with reduced site waste and material rejection.",
+  "Supports indoor comfort through thermal and acoustic performance benefits.",
 ];
 
 export const galleryItems = [
   {
-    title: "Bridge Reinforcement Works",
-    category: "Projects",
-    image:
-      "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Bulk Cement Dispatch",
-    category: "Materials",
-    image:
-      "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Site Tower Crane Setup",
-    category: "Work Sites",
-    image:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Road Foundation Delivery",
-    category: "Projects",
+    title: "Before: Rough Cement Surface",
+    category: "Before",
     image:
       "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Steel Yard Quality Check",
-    category: "Materials",
+    title: "After: Gypsum Smooth Finish",
+    category: "After",
     image:
-      "https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Night Shift Concrete Pour",
-    category: "Work Sites",
+    title: "Before: Water Curing Workflow",
+    category: "Before",
     image:
-      "https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "After: Fast Interior Handover",
+    category: "After",
+    image:
+      "https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Site Application in Progress",
+    category: "Application",
+    image:
+      "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Machine Spray Finish",
+    category: "Application",
+    image:
+      "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 export const jobs = [
   {
-    id: "site-engineer",
-    title: "Site Engineer",
-    location: "Lagos, NG",
+    id: "site-application-engineer",
+    title: "Site Application Engineer",
+    location: "Bengaluru",
     type: "Full-time",
-    description: "Oversee on-site execution, quality checks, and safety compliance.",
+    description: "Lead contractor enablement and ensure finish quality benchmarks on site.",
   },
   {
-    id: "procurement-specialist",
-    title: "Procurement Specialist",
-    location: "Dubai, UAE",
+    id: "specification-manager",
+    title: "Specification Manager",
+    location: "Mumbai",
     type: "Full-time",
-    description: "Drive supplier negotiations and strategic sourcing decisions.",
+    description: "Partner with architects and consultants to drive gypsum specification wins.",
   },
   {
-    id: "logistics-coordinator",
-    title: "Logistics Coordinator",
-    location: "Remote / Hybrid",
-    type: "Contract",
-    description: "Plan dispatch schedules and optimize multi-location delivery routes.",
-  },
-];
-
-export const blogPosts = [
-  {
-    slug: "future-of-sustainable-construction",
-    title: "The Future of Sustainable Construction Supply Chains",
-    excerpt:
-      "How data-led sourcing and lower-emission materials are shaping premium construction delivery.",
-    date: "April 10, 2026",
-  },
-  {
-    slug: "choosing-the-right-rebar",
-    title: "Choosing the Right Rebar for Large-Scale Infrastructure",
-    excerpt:
-      "A practical guide to tensile grades, corrosion protection, and long-term structural performance.",
-    date: "March 22, 2026",
-  },
-  {
-    slug: "reducing-project-delays-with-procurement",
-    title: "Reducing Project Delays with Smarter Procurement",
-    excerpt:
-      "Proactive logistics and transparent forecasting techniques that keep builds on track.",
-    date: "February 28, 2026",
-  },
-];
-
-export const faqs = [
-  {
-    question: "Do you handle large-volume international orders?",
-    answer:
-      "Yes. PRIME CONSTRUCT supports enterprise-scale regional and international shipments with dedicated logistics planning.",
-  },
-  {
-    question: "Can I request product certifications before purchase?",
-    answer:
-      "Absolutely. Our team shares test reports, compliance documents, and quality certificates before dispatch.",
-  },
-  {
-    question: "Do you offer custom procurement packages?",
-    answer:
-      "Yes. We build tailored supply bundles based on project timeline, budget, and technical requirements.",
+    id: "inside-sales-lead",
+    title: "Inside Sales Lead",
+    location: "Gurugram",
+    type: "Full-time",
+    description: "Convert inbound B2B leads into qualified project opportunities.",
   },
 ];

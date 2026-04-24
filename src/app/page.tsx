@@ -5,7 +5,15 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedCounter } from "@/components/animated-counter";
-import { clients, products, services, stats, testimonials, whyChooseUs } from "@/lib/data";
+import {
+  caseStudies,
+  heroStats,
+  products,
+  targetAudience,
+  testimonials,
+  trustLogos,
+  valueStack,
+} from "@/lib/data";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -79,7 +87,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            Building Dreams, <span className="gold-gradient">Supplying Solutions</span>
+            Finish Faster. <span className="gold-gradient">Build Smarter.</span>
           </motion.h1>
           <motion.p
             className="mt-5 max-w-2xl text-lg text-white/80"
@@ -87,8 +95,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.28 }}
           >
-            Premium-grade construction materials and project support engineered for modern
-            infrastructure and enterprise builders.
+            High-performance gypsum solutions for modern construction.
           </motion.p>
           <motion.div
             className="mt-8 flex flex-wrap gap-4"
@@ -97,18 +104,29 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Link
-              href="/products"
+              href="/contact"
               className="rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-[#D4AF37]/25 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#D4AF37]/30"
+            >
+              Get Quote
+            </Link>
+            <Link
+              href="/products"
+              className="rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#D4AF37]/50 hover:bg-white/10"
             >
               Explore Products
             </Link>
-            <Link
-              href="/contact"
-              className="rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#D4AF37]/50 hover:bg-white/10"
-            >
-              Contact Us
-            </Link>
           </motion.div>
+          <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-white/15 bg-black/45 p-4 backdrop-blur-md">
+                <p className="text-2xl font-bold text-[#D4AF37]">
+                  {stat.value === 0 ? "No" : <AnimatedCounter value={stat.value} />}
+                  {stat.suffix}
+                </p>
+                <p className="text-sm text-white/75">{stat.label}</p>
+              </div>
+            ))}
+          </div>
           <motion.div
             className="mt-16 flex items-center gap-2 text-sm text-white/70"
             animate={{ y: [0, 6, 0] }}
@@ -121,40 +139,19 @@ export default function Home() {
       </section>
 
       <motion.section
-        className="section-shell py-20"
+        className="section-shell py-16"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <motion.div
-            className="glass-card p-8 transition hover:border-[#D4AF37]/30"
-            whileHover={{ y: -4, transition: { duration: 0.25 } }}
-          >
-            <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">About</p>
-            <h2 className="mt-3 text-3xl font-bold">Future-Focused Construction Ecosystem</h2>
-            <p className="mt-4 text-white/75">
-              We help contractors, developers, and infrastructure teams source premium materials
-              and deliver projects faster through dependable procurement and logistics.
-            </p>
-          </motion.div>
-          <div className="grid gap-4">
-            {services.slice(0, 2).map((service, i) => (
-              <motion.div
-                key={service.title}
-                className="glass-card p-6 transition hover:border-[#D4AF37]/25"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i, duration: 0.5 }}
-                whileHover={{ scale: 1.01 }}
-              >
-                <h3 className="font-semibold text-[#D4AF37]">{service.title}</h3>
-                <p className="mt-2 text-sm text-white/75">{service.description}</p>
-              </motion.div>
-            ))}
-          </div>
+        <p className="text-center text-xs uppercase tracking-[0.35em] text-white/50">Trusted by practitioners across India</p>
+        <div className="mt-5 grid gap-3 md:grid-cols-6">
+          {trustLogos.map((logo) => (
+            <div key={logo} className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-3 text-center text-xs text-white/75">
+              {logo}
+            </div>
+          ))}
         </div>
       </motion.section>
 
@@ -165,12 +162,21 @@ export default function Home() {
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <div className="mb-8 flex items-end justify-between">
-          <h2 className="text-3xl font-bold">Featured Products</h2>
-          <Link href="/products" className="inline-flex items-center gap-1 text-[#D4AF37] transition hover:gap-2">
-            View all <ArrowRight size={14} />
-          </Link>
-        </div>
+        <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">The Problem</p>
+        <h2 className="mt-2 text-3xl font-bold">Construction is slow, costly, inefficient.</h2>
+        <p className="mt-3 max-w-3xl text-white/75">
+          Cement plaster introduces long dry cycles, water curing overhead, and uneven finishes
+          that increase rework. That means delayed handovers and reduced margins.
+        </p>
+      </motion.section>
+
+      <motion.section className="section-shell py-16" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={sectionReveal}>
+        <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">The Solution</p>
+        <h2 className="mt-2 text-3xl font-bold">Gypsum systems outperform conventional plaster.</h2>
+        <p className="mt-3 max-w-3xl text-white/75">
+          PRIME CONSTRUCT gypsum products help teams deliver superior finish quality faster while
+          reducing labor and water dependency.
+        </p>
         <div className="grid gap-6 md:grid-cols-3">
           {products.slice(0, 3).map((item, i) => (
             <motion.article
@@ -208,17 +214,17 @@ export default function Home() {
       </motion.section>
 
       <motion.section
-        className="section-shell py-20"
+        className="section-shell py-16"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <h2 className="text-3xl font-bold">Why Choose Us</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {whyChooseUs.map((point, i) => (
+        <h2 className="text-3xl font-bold">Value Stack</h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {valueStack.map((point, i) => (
             <motion.div
-              key={point}
+              key={point.title}
               className="glass-card flex items-start gap-3 p-5 transition hover:border-[#D4AF37]/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -227,83 +233,87 @@ export default function Home() {
               whileHover={{ x: 4 }}
             >
               <CheckCircle2 className="mt-0.5 shrink-0 text-[#D4AF37]" size={18} />
-              <p className="text-white/85">{point}</p>
+              <div>
+                <p className="font-semibold text-white">{point.title}</p>
+                <p className="text-sm text-white/75">{point.copy}</p>
+              </div>
             </motion.div>
           ))}
         </div>
       </motion.section>
 
       <motion.section
-        className="section-shell py-20"
+        className="section-shell py-16"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <div className="grid gap-4 md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              className="glass-card p-6 text-center transition hover:border-[#D4AF37]/35"
-              initial={{ opacity: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.08 * i }}
-            >
-              <p className="text-3xl font-bold text-[#D4AF37]">
-                <AnimatedCounter value={stat.value} />+
-              </p>
-              <p className="mt-2 text-sm text-white/70">{stat.label}</p>
-            </motion.div>
+        <h2 className="text-3xl font-bold">Built For Decision Makers</h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {targetAudience.map((segment) => (
+            <div key={segment} className="glass-card p-6 text-center text-lg font-semibold text-white/90">
+              {segment}
+            </div>
           ))}
         </div>
       </motion.section>
 
       <motion.section
-        className="section-shell py-20"
+        className="section-shell py-16"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <h2 className="text-3xl font-bold">Testimonials</h2>
+        <h2 className="text-3xl font-bold">Case Study Highlight</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {testimonials.map((t, i) => (
+          {caseStudies.map((item, i) => (
             <motion.article
-              key={t.name}
+              key={item.project}
               className="glass-card p-6 transition hover:border-[#D4AF37]/25"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.12 * i }}
             >
-              <p className="text-white/80">&ldquo;{t.quote}&rdquo;</p>
-              <p className="mt-4 font-semibold text-[#D4AF37]">{t.name}</p>
-              <p className="text-sm text-white/60">{t.role}</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-[#D4AF37]">{item.project}</p>
+              <p className="mt-3 text-sm text-white/75">
+                <span className="font-semibold text-white">Problem:</span> {item.problem}
+              </p>
+              <p className="mt-2 text-sm text-white/75">
+                <span className="font-semibold text-white">Solution:</span> {item.solution}
+              </p>
+              <p className="mt-2 text-sm text-[#D4AF37]">{item.result}</p>
             </motion.article>
           ))}
         </div>
+        <Link href="/case-studies" className="mt-6 inline-flex items-center gap-2 text-[#D4AF37]">
+          Explore all case studies <ArrowRight size={14} />
+        </Link>
       </motion.section>
 
       <motion.section
-        className="section-shell py-20"
+        className="section-shell py-16"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
-        <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">Clients & Partners</p>
-        <div className="mt-6 grid gap-3 md:grid-cols-3">
-          {clients.map((client, i) => (
+        <h2 className="text-3xl font-bold">Testimonials</h2>
+        <div className="mt-8 grid gap-3 md:grid-cols-2">
+          {testimonials.map((client, i) => (
             <motion.div
-              key={client}
-              className="rounded-lg border border-white/10 px-4 py-3 text-center text-sm transition hover:border-[#D4AF37]/40 hover:bg-white/[0.03]"
+              key={client.name}
+              className="rounded-lg border border-white/10 px-5 py-5 text-sm transition hover:border-[#D4AF37]/40 hover:bg-white/[0.03]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.04 * i }}
             >
-              {client}
+              <p className="text-white/80">&ldquo;{client.quote}&rdquo;</p>
+              <p className="mt-3 font-semibold text-[#D4AF37]">{client.name}</p>
+              <p className="text-xs text-white/60">{client.role}</p>
             </motion.div>
           ))}
         </div>
@@ -323,14 +333,13 @@ export default function Home() {
         >
           <h2 className="text-3xl font-bold">Ready to Build with Confidence?</h2>
           <p className="mt-3 max-w-2xl text-black/80">
-            Let our team design a procurement strategy aligned to your project timeline, budget,
-            and quality standards.
+            Get a project-specific savings estimate and implementation roadmap in one call.
           </p>
           <Link
-            href="/contact"
+            href="/calculator"
             className="mt-6 inline-flex rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0A0A0A]"
           >
-            Start a Conversation
+            Run Cost Calculator
           </Link>
         </motion.div>
       </motion.section>

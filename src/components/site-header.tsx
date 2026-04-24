@@ -47,7 +47,7 @@ export function SiteHeader() {
               <span className="text-[#D4AF37]">CONSTRUCT</span>
             </p>
             <p className="mt-0.5 text-[9px] uppercase tracking-[0.28em] text-white/45">
-              Building dreams
+              Practitioner&apos;s Choice
             </p>
           </div>
         </Link>
@@ -64,6 +64,12 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="rounded-full bg-[#D4AF37] px-4 py-2 text-xs font-semibold text-black transition hover:brightness-110"
+          >
+            Get Quote
+          </Link>
         </nav>
         <button
           onClick={() => setOpen((v) => !v)}

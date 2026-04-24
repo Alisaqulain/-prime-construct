@@ -1,6 +1,19 @@
-import { faqs } from "@/lib/data";
-
 export default function FaqPage() {
+  const faqs = [
+    {
+      question: "Is gypsum plaster suitable for high-volume projects?",
+      answer: "Yes. It is widely used for large residential and commercial developments.",
+    },
+    {
+      question: "Can gypsum eliminate putty costs?",
+      answer: "In many projects, smoother finish quality significantly reduces or removes putty usage.",
+    },
+    {
+      question: "Do you provide on-site application guidance?",
+      answer: "Yes. PRIME CONSTRUCT teams support implementation and quality checks during rollout.",
+    },
+  ];
+
   return (
     <section className="section-shell py-24">
       <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>

@@ -81,7 +81,7 @@ export const products: Product[] = [
     description: "Lightweight gypsum blend engineered for superior overhead bonding.",
     image:
       "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-    specs: ["10mm, 20mm, 40mm", "Dust-controlled", "Lab-tested consistency"],
+    benefits: ["10mm, 20mm, 40mm", "Dust-controlled", "Lab-tested consistency"],
   },
   {
     id: 4,

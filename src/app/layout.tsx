@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { CursorGlow } from "@/components/cursor-glow";
 import { SiteBackground } from "@/components/site-background";
 import { StickyQuote } from "@/components/sticky-quote";
+import { AlertProvider } from "@/components/modern-alerts";
+import { SmartPopup } from "@/components/smart-popup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,14 +61,17 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable} h-full scroll-smooth antialiased`}
     >
       <body className="relative min-h-full overflow-x-hidden bg-[#0A0A0A] text-white">
-        <SiteBackground />
-        <CursorGlow />
-        <SiteHeader />
-        <main className="relative z-10 pt-18">{children}</main>
-        <div className="relative z-10">
-          <SiteFooter />
-        </div>
-        <StickyQuote />
+        <AlertProvider>
+          <SiteBackground />
+          <CursorGlow />
+          <SiteHeader />
+          <main className="relative z-10 pt-18">{children}</main>
+          <div className="relative z-10">
+            <SiteFooter />
+          </div>
+          <StickyQuote />
+          <SmartPopup />
+        </AlertProvider>
       </body>
     </html>
   );

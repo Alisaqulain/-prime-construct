@@ -80,8 +80,8 @@ export const products: Product[] = [
     category: "Ceiling",
     description: "Lightweight gypsum blend engineered for superior overhead bonding.",
     image:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
-    benefits: ["Low sag risk", "Easy spread", "Reduced dead load"],
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+    specs: ["10mm, 20mm, 40mm", "Dust-controlled", "Lab-tested consistency"],
   },
   {
     id: 4,

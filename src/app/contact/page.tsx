@@ -3,22 +3,35 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { MessageCircleMore } from "lucide-react";
+import { useAlerts } from "@/components/modern-alerts";
 
 export default function ContactPage() {
-  const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
+  const alerts = useAlerts();
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSending(true);
     const formData = new FormData(event.currentTarget);
     const payload = Object.fromEntries(formData.entries());
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    setStatus(response.ok ? "Message sent successfully." : "Unable to send message right now.");
-    event.currentTarget.reset();
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        alerts.error("Message not sent", "Please try again in a moment.");
+        return;
+      }
+      alerts.success("Message sent", "Our team will contact you shortly.");
+      event.currentTarget.reset();
+    } catch {
+      alerts.error("Network issue", "Please check your internet and retry.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -30,14 +43,15 @@ export default function ContactPage() {
 
       <div className="mt-10 grid gap-8 md:grid-cols-2">
         <form onSubmit={onSubmit} className="glass-card space-y-4 p-6">
-          <input required name="name" placeholder="Your Name" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <input required name="email" type="email" placeholder="Email" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <input name="company" placeholder="Company" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <input name="phone" placeholder="Phone" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <input name="projectType" placeholder="Project Type (Residential/Commercial)" className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <textarea required name="message" placeholder="Tell us about your requirement" className="h-32 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2" />
-          <button className="rounded-full bg-[#D4AF37] px-6 py-2 font-semibold text-black">Send Message</button>
-          {status ? <p className="text-sm text-white/80">{status}</p> : null}
+          <input required name="name" placeholder="Your Name" className="input-modern" />
+          <input required name="email" type="email" placeholder="Email" className="input-modern" />
+          <input name="company" placeholder="Company" className="input-modern" />
+          <input name="phone" placeholder="Phone" className="input-modern" />
+          <input name="projectType" placeholder="Project Type (Residential/Commercial)" className="input-modern" />
+          <textarea required name="message" placeholder="Tell us about your requirement" className="input-modern h-32 resize-none" />
+          <button disabled={sending} className="button-modern disabled:cursor-not-allowed disabled:opacity-70">
+            {sending ? "Sending..." : "Send Message"}
+          </button>
         </form>
 
         <div className="space-y-5">

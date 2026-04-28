@@ -1,29 +1,27 @@
-export default function FaqPage() {
-  const faqs = [
-    {
-      question: "Is gypsum plaster suitable for high-volume projects?",
-      answer: "Yes. It is widely used for large residential and commercial developments.",
-    },
-    {
-      question: "Can gypsum eliminate putty costs?",
-      answer: "In many projects, smoother finish quality significantly reduces or removes putty usage.",
-    },
-    {
-      question: "Do you provide on-site application guidance?",
-      answer: "Yes. PRIME CONSTRUCT teams support implementation and quality checks during rollout.",
-    },
-  ];
+import Link from "next/link";
+import { faqs } from "@/lib/data";
+import { FaqAccordion } from "@/components/faq-accordion";
 
+export default function FaqPage() {
   return (
     <section className="section-shell py-24">
-      <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
-      <div className="mt-8 space-y-4">
-        {faqs.map((item) => (
-          <details key={item.question} className="glass-card p-5">
-            <summary className="cursor-pointer font-semibold">{item.question}</summary>
-            <p className="mt-3 text-sm text-white/75">{item.answer}</p>
-          </details>
-        ))}
+      <div className="mx-auto max-w-4xl">
+        <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">Need clarity before you decide?</p>
+        <h1 className="mt-2 text-4xl font-bold">Frequently Asked Questions</h1>
+        <p className="mt-3 text-white/75">
+          Important answers about execution speed, finish quality, cost savings, and on-site implementation.
+        </p>
+
+        <div className="mt-8">
+          <FaqAccordion items={faqs} />
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-sm text-white/75">
+          Still need help for your project?{" "}
+          <Link href="/contact" className="font-semibold text-[#D4AF37]">
+            Talk to our expert team.
+          </Link>
+        </div>
       </div>
     </section>
   );

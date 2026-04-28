@@ -138,6 +138,39 @@ export const testimonials = [
   },
 ];
 
+export const faqs = [
+  {
+    question: "Is gypsum plaster suitable for large residential and commercial projects?",
+    answer:
+      "Yes. Our gypsum systems are designed for scale and are regularly used in high-volume projects where speed and finish consistency are critical.",
+  },
+  {
+    question: "Can gypsum plaster reduce or remove putty cost?",
+    answer:
+      "In many projects, yes. Because the finish is smoother than conventional cement plaster, putty use is often reduced significantly or eliminated.",
+  },
+  {
+    question: "How much faster is gypsum compared to cement plaster?",
+    answer:
+      "Typical drying time is around 72 hours, compared to multi-day curing cycles for cement plaster. This helps accelerate handover schedules.",
+  },
+  {
+    question: "Do you provide on-site application and quality support?",
+    answer:
+      "Yes. PRIME CONSTRUCT teams support contractor onboarding, application best practices, and quality checks during rollout.",
+  },
+  {
+    question: "Is gypsum plaster aligned with sustainability goals?",
+    answer:
+      "Yes. It removes water curing requirements and reduces site waste, helping teams improve resource efficiency and green-building readiness.",
+  },
+  {
+    question: "How can we get a project-specific estimate quickly?",
+    answer:
+      "Use our cost calculator for an instant estimate, then connect with our team for a project-level recommendation and implementation plan.",
+  },
+];
+
 export const timeline = [
   { year: "2012", detail: "Founded with a mission to modernize wall finishing in India." },
   { year: "2017", detail: "Built specialist contractor network and technical training wing." },

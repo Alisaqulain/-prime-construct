@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { AnimatedCounter } from "@/components/animated-counter";
 import {
   caseStudies,
+  faqs,
   heroStats,
   products,
   targetAudience,
@@ -14,6 +15,7 @@ import {
   trustLogos,
   valueStack,
 } from "@/lib/data";
+import { FaqAccordion } from "@/components/faq-accordion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -316,6 +318,28 @@ export default function Home() {
               <p className="text-xs text-white/60">{client.role}</p>
             </motion.div>
           ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="section-shell py-16"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={sectionReveal}
+      >
+        <div className="mx-auto max-w-4xl">
+          <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">Important FAQ</p>
+          <h2 className="mt-2 text-3xl font-bold">Questions decision-makers ask before switching to gypsum</h2>
+          <p className="mt-3 text-white/75">
+            Quick answers on cost, speed, application support, and long-term project value.
+          </p>
+          <div className="mt-7">
+            <FaqAccordion items={faqs.slice(0, 5)} />
+          </div>
+          <Link href="/faqs" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
+            View all FAQs <ArrowRight size={14} />
+          </Link>
         </div>
       </motion.section>
 

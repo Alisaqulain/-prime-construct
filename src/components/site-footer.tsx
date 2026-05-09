@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { footerPrimaryLinks } from "@/lib/data";
 
 export function SiteFooter() {
   return (
@@ -12,21 +13,19 @@ export function SiteFooter() {
             </span>
             <h3 className="text-xl font-semibold text-white">PRIME CONSTRUCT</h3>
           </div>
-          <p className="mt-3 text-sm text-white/65">
-            The practitioner&apos;s choice for speed, cost efficiency, superior finish, and
-            sustainability.
+          <p className="mt-3 text-sm text-white/65 leading-relaxed">
+            Premium gypsum plastering solutions—professional application backed by disciplined import,
+            warehousing, and site delivery partnerships.
           </p>
         </div>
         <div>
-          <p className="text-sm font-semibold text-[#D4AF37]">Solutions</p>
+          <p className="text-sm font-semibold text-[#D4AF37]">Explore</p>
           <div className="mt-3 flex flex-col gap-2 text-sm text-white/80">
-            <Link href="/about">About</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/calculator">Cost Calculator</Link>
-            <Link href="/case-studies">Case Studies</Link>
-            <Link href="/sustainability">Sustainability</Link>
-            <Link href="/careers">Careers</Link>
-            <Link href="/contact">Contact</Link>
+            {footerPrimaryLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-white">
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
         <div>
@@ -35,8 +34,10 @@ export function SiteFooter() {
             <Link href="/green-guide.pdf" target="_blank">
               Download Green Guide (PDF)
             </Link>
+            <Link href="/faqs">FAQs</Link>
+            <Link href="/blog">Insights</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms">Terms & Conditions</Link>
+            <Link href="/terms">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>

@@ -65,10 +65,10 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/contact#lead-form"
             className="rounded-full bg-[#D4AF37] px-4 py-2 text-xs font-semibold text-black transition hover:brightness-110"
           >
-            Get Quote
+            Request quote
           </Link>
         </nav>
         <button

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | PRIME CONSTRUCT",
   },
   description:
-    "PRIME CONSTRUCT is the practitioner's choice for gypsum solutions in India. Build faster, save water, and deliver superior finish quality.",
+    "Premium gypsum plastering for construction teams: import-backed material supply, professional application, and Dropshore-aligned logistics.",
   keywords: [
     "gypsum plaster India",
     "gypsum vs cement plaster",

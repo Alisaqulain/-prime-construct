@@ -2,9 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { Clock, Mail, MessageCircleMore, Phone } from "lucide-react";
+import { Clock, Mail, Phone } from "lucide-react";
 import { useAlerts } from "@/components/modern-alerts";
-import { contactInfo, serviceOptionsForForm } from "@/lib/data";
+import { contactInfo, projectTypeOptionsForForm } from "@/lib/data";
 
 export default function ContactPage() {
   const [sending, setSending] = useState(false);
@@ -26,7 +26,7 @@ export default function ContactPage() {
         alerts.error("Message not sent", "Please try again in a moment.");
         return;
       }
-      alerts.success("Inquiry received", "Our team will contact you shortly.");
+      alerts.success("Inquiry received", "Our gypsum expert will contact you shortly.");
       event.currentTarget.reset();
     } catch {
       alerts.error("Network issue", "Please check your internet and retry.");
@@ -36,56 +36,40 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="section-shell py-20 md:py-28">
-      <p className="text-sm uppercase tracking-[0.35em] text-[#D4AF37]">Contact</p>
-      <h1 className="mt-4 text-4xl font-bold md:text-5xl">Start a confidential project conversation</h1>
-      <p className="mt-5 max-w-2xl text-lg text-white/75">
-        Share your scope and location—we will respond with availability, indicative timelines, and the
-        right technical lead from our side.
+    <section className="section-shell py-16 sm:py-20 md:py-28">
+      <p className="premium-label">Contact</p>
+      <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">Talk to a gypsum expert</h1>
+      <p className="mt-4 max-w-2xl text-base text-white/75 sm:mt-5 sm:text-lg">
+        Share your project type and location — we will respond with material options, application
+        availability, and indicative timelines.
       </p>
 
       <div className="mt-14 grid gap-12 lg:grid-cols-[1.15fr_minmax(0,0.95fr)]">
-        <form id="lead-form" onSubmit={onSubmit} className="glass-card space-y-4 p-6 md:p-8 scroll-mt-28">
-          <h2 className="text-lg font-semibold text-white">Lead form</h2>
+        <form id="lead-form" onSubmit={onSubmit} className="glass-card space-y-4 p-5 sm:p-6 md:p-8 scroll-mt-[5.5rem]">
+          <h2 className="text-lg font-semibold text-white">Quick enquiry</h2>
           <p className="text-xs text-white/50">Fields marked * are required.</p>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="sm:col-span-1">
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-                Name *
-              </label>
-              <input required name="name" placeholder="Full name" className="input-modern" autoComplete="name" />
-            </div>
-            <div className="sm:col-span-1">
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-                Company name *
-              </label>
-              <input required name="company" placeholder="Company / firm" className="input-modern" />
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-                Phone *
-              </label>
-              <input required name="phone" type="tel" placeholder="+91 …" className="input-modern" />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-                Email *
-              </label>
-              <input required name="email" type="email" placeholder="you@company.com" className="input-modern" />
-            </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
+              Name *
+            </label>
+            <input required name="name" placeholder="Full name" className="input-modern" autoComplete="name" />
           </div>
 
           <div>
             <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-              Service required *
+              Phone *
             </label>
-            <select name="serviceRequired" required className="input-modern bg-black/40">
-              <option value="">Select a service…</option>
-              {serviceOptionsForForm.map((opt) => (
+            <input required name="phone" type="tel" placeholder="+91 …" className="input-modern" autoComplete="tel" />
+          </div>
+
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
+              Project type *
+            </label>
+            <select name="projectType" required className="input-modern bg-black/40">
+              <option value="">Select project type…</option>
+              {projectTypeOptionsForForm.map((opt) => (
                 <option key={opt} value={opt}>
                   {opt}
                 </option>
@@ -95,11 +79,11 @@ export default function ContactPage() {
 
           <div>
             <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/55">
-              Project location *
+              Location *
             </label>
             <input
               required
-              name="projectLocation"
+              name="location"
               placeholder="City, site name, or region"
               className="input-modern"
             />
@@ -112,7 +96,7 @@ export default function ContactPage() {
             <textarea
               required
               name="message"
-              placeholder="Rough area (sq ft), timeline, towers / floors, and any specification references"
+              placeholder="Rough area (sq ft), timeline, and any specific requirements"
               className="input-modern h-36 resize-y"
               rows={5}
             />
@@ -122,7 +106,7 @@ export default function ContactPage() {
             disabled={sending}
             className="button-modern w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {sending ? "Submitting…" : "Submit inquiry"}
+            {sending ? "Submitting…" : "Talk to Gypsum Expert"}
           </button>
         </form>
 
@@ -150,28 +134,22 @@ export default function ContactPage() {
             <p className="mt-6 text-xs leading-relaxed text-white/55">{contactInfo.address}</p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-gradient-to-br from-[#D4AF37]/25 via-[#1a1510] to-[#0A0A0A] px-7 py-8 text-black">
-            <h3 className="text-xl font-bold">Need urgency on tender or site start?</h3>
-            <p className="mt-2 max-w-md text-sm text-black/85">
-              We route commercial and technical enquiries to the same desk so you receive a cohesive
-              response—material lane, application lane, or both.
+          <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-gradient-to-br from-[#D4AF37]/25 via-[#1a1510] to-[#0A0A0A] px-7 py-8">
+            <h3 className="text-xl font-bold text-white">Prefer WhatsApp?</h3>
+            <p className="mt-2 max-w-md text-sm text-white/70">
+              Message us directly for quick answers on gypsum material, application crews, or project
+              timelines.
             </p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/calculator"
-                className="inline-flex justify-center rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white hover:bg-black/90"
-              >
-                Run calculator
-              </Link>
-              <Link
-                href={`https://wa.me/${contactInfo.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center rounded-full border-2 border-black/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-black hover:bg-black/10"
-              >
-                WhatsApp line
-              </Link>
-            </div>
+            <Link
+              href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(
+                "Hi, I'd like to speak with a gypsum expert about my project."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
+            >
+              Chat on WhatsApp
+            </Link>
           </div>
 
           <iframe
@@ -194,16 +172,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
-      <Link
-        href={`https://wa.me/${contactInfo.whatsapp}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-black shadow-lg transition hover:brightness-110"
-      >
-        <MessageCircleMore size={16} />
-        WhatsApp
-      </Link>
     </section>
   );
 }

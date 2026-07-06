@@ -28,10 +28,10 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? -1 : i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+              className="flex w-full min-h-[52px] items-center justify-between gap-3 px-4 py-4 text-left sm:gap-4 sm:px-5"
               aria-expanded={isOpen}
             >
-              <span className="text-sm font-semibold text-white md:text-base">{item.question}</span>
+              <span className="text-sm font-semibold leading-snug text-white sm:text-base">{item.question}</span>
               <ChevronDown
                 size={18}
                 className={clsx("shrink-0 text-[#D4AF37] transition-transform", isOpen && "rotate-180")}

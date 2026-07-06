@@ -3,6 +3,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
+  --header-h: 4.5rem;
+  --mobile-dock-h: 4.25rem;
 }
 
 @theme inline {
@@ -12,10 +14,26 @@
   --font-heading: var(--font-montserrat);
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+body.has-mobile-dock {
+  padding-bottom: calc(var(--mobile-dock-h) + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  body.has-mobile-dock {
+    padding-bottom: 0;
+  }
 }
 
 h1,
@@ -28,7 +46,7 @@ h6 {
 }
 
 .section-shell {
-  @apply mx-auto max-w-7xl px-4 md:px-8;
+  @apply mx-auto max-w-7xl px-4 sm:px-5 md:px-8;
 }
 
 .glass-card {
@@ -52,11 +70,78 @@ h6 {
 }
 
 .input-modern {
-  @apply w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-white outline-none transition;
+  @apply w-full rounded-xl border border-white/15 bg-white/5 px-3 py-3 text-base text-white outline-none transition;
   @apply placeholder:text-white/40 hover:border-white/25 focus:border-[#D4AF37]/60 focus:bg-white/10 focus:ring-2 focus:ring-[#D4AF37]/20;
 }
 
+@media (min-width: 768px) {
+  .input-modern {
+    @apply py-2.5 text-sm;
+  }
+}
+
 .button-modern {
-  @apply rounded-full bg-[#D4AF37] px-6 py-2.5 text-sm font-semibold text-black transition;
+  @apply rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition;
   @apply hover:-translate-y-0.5 hover:brightness-110 hover:shadow-lg hover:shadow-[#D4AF37]/30;
+}
+
+@media (min-width: 768px) {
+  .button-modern {
+    @apply py-2.5;
+  }
+}
+
+.section-shell-wide {
+  @apply mx-auto max-w-[90rem] px-4 sm:px-5 md:px-10;
+}
+
+.premium-label {
+  @apply text-[10px] font-semibold uppercase tracking-[0.28em] text-[#D4AF37] sm:text-xs sm:tracking-[0.35em];
+}
+
+/* Horizontal scroll rows — mobile carousels */
+.mobile-scroll-row {
+  @apply -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:-mx-5 sm:px-5 md:mx-0 md:grid md:snap-none md:overflow-visible md:px-0 md:pb-0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-scroll-item {
+  @apply w-[82vw] max-w-[320px] shrink-0 snap-center sm:w-[70vw] md:w-auto md:max-w-none md:shrink;
+}
+
+/* Story pill strip */
+.story-pill-strip {
+  @apply -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 md:mx-0 md:flex-wrap md:overflow-visible md:px-0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.story-pill-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.story-pill-strip button {
+  @apply shrink-0 snap-start;
+}
+
+/* Comparison table → cards on mobile */
+.compare-cards {
+  @apply grid gap-3 md:hidden;
+}
+
+.compare-table-wrap {
+  @apply hidden overflow-x-auto md:block;
+}
+
+.compare-card {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] p-4;
+}
+
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0.75rem));
 }

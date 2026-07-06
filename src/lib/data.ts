@@ -7,33 +7,61 @@ export const contactInfo = {
   address: "Prime Construct Corporate Office, India",
 };
 
-export type ApplicationService = {
+export type MainSolution = {
+  id: string;
   title: string;
+  subtitle: string;
   description: string;
+  highlights: string[];
+  image: string;
+  audience?: string;
 };
 
-export type SupplierSolution = {
-  /** Shown prominently on the card image */
+export type GypsumProduct = {
   name: string;
+  tagline: string;
   description: string;
+  image: string;
+  specs: string[];
+};
+
+export type HeroVisualStory = {
+  label: string;
+  caption: string;
   image: string;
 };
 
-export type PortfolioProject = {
-  title: string;
+export type VideoTestimonialSlot = {
+  id: string;
+  audience: "Builders" | "Contractors" | "Homeowners";
+  placeholder: boolean;
+};
+
+export type CaseStudyPhase = {
+  phase: "before" | "process" | "after";
+  label: string;
+  description: string;
+};
+
+export type CaseStudyTemplate = {
+  slug: string;
   location: string;
-  scope: string;
-  outcome: string;
-  image: string;
+  projectType: string;
+  areaCovered: string;
+  clientStoryPrompt: string;
+  phases: CaseStudyPhase[];
+  /** Video URL when available */
+  beforeVideo?: string;
+  processVideo?: string;
+  afterVideo?: string;
+  published: boolean;
 };
 
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Services", href: "/services" },
-  { label: "Calculator", href: "/calculator" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Products", href: "/products" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ];
@@ -41,234 +69,222 @@ export const navLinks = [
 export const footerPrimaryLinks = [
   { label: "About", href: "/about" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Calculator", href: "/calculator" },
+  { label: "Products", href: "/products" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Sustainability", href: "/sustainability" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const trustLogos = [
-  "L&T BuildTech",
-  "Shapoorji Developers",
-  "Sobha Interiors",
-  "BIM Studio India",
-  "Urban Frame Projects",
-  "K2 Contractors",
-];
-
-export const heroStats = [
-  { label: "Typical dry cycle", value: 72, suffix: " hr" },
-  { label: "Water curing", value: 0, suffix: "" },
-  { label: "Finish confidence", value: 100, suffix: "%" },
-];
-
-export const heroServiceHighlights = [
-  "Premium gypsum plaster supply",
-  "Certified application & site QA",
-  "Design walls, ceilings & custom finishes",
-  "Backed by Dropshore Import & Export logistics",
+/** Hero visual storytelling panels — gypsum as the product hero */
+export const heroVisualStories: HeroVisualStory[] = [
+  {
+    label: "Premium finish",
+    caption: "Luxury gypsum-finished walls with mirror-smooth surfaces",
+    image:
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    label: "Smooth interiors",
+    caption: "Paint-ready white surfaces for modern homes",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    label: "Moisture protection",
+    caption: "Engineered gypsum systems for durable wall protection",
+    image:
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    label: "Expert application",
+    caption: "Skilled teams applying gypsum plaster on site",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    label: "Final result",
+    caption: "Premium home interiors ready for handover",
+    image:
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80",
+  },
 ];
 
 export const valueStack = [
   {
-    title: "Smooth, paint-ready surfaces",
-    copy: "Professional gypsum application reduces rework and delivers a corporate-grade finish.",
+    title: "Mirror-smooth walls",
+    copy: "Gypsum delivers a premium white finish — no heavy putty, no uneven patches.",
   },
   {
-    title: "Predictable project timelines",
-    copy: "Faster drying vs. conventional plaster helps you protect handover dates.",
+    title: "Faster handover",
+    copy: "72-hour dry cycle vs weeks of cement curing keeps your programme on track.",
   },
   {
-    title: "Supply you can trust",
-    copy: "Consistent material quality and reliable delivery through our import & distribution network.",
-  },
-];
-
-export const targetAudience = ["Developers", "Contractors", "Architects & designers"];
-
-/** Left column — Application Services */
-export const applicationServices: ApplicationService[] = [
-  {
-    title: "Gypsum Plaster Services",
-    description:
-      "Machine and manual application with trained crews, defined SOPs, and quality checkpoints at every stage.",
-  },
-  {
-    title: "False Ceiling Solution",
-    description:
-      "Lightweight overhead systems with clean lines, acoustic options, and coordinated MEP interfaces.",
-  },
-  {
-    title: "Design Wall Solution",
-    description:
-      "Feature walls and linear details executed to drawing, with substrates prepared for premium paint or cladding.",
-  },
-  {
-    title: "Custom Design Wall Solution",
-    description:
-      "Bespoke geometries, textures, and multi-layer builds for signature lobbies, retail, and hospitality.",
+    title: "Material + execution",
+    copy: "Import-backed gypsum supply with trained application teams under one roof.",
   },
 ];
 
-/** Right column — Supplier Solutions (names on cards) */
-export const supplierSolutions: SupplierSolution[] = [
+export const targetAudience = ["Builders", "Contractors", "Homeowners"];
+
+/** Three core solution offerings */
+export const mainSolutions: MainSolution[] = [
   {
-    name: "Dropshore Premium Gypsum Supply",
+    id: "application",
+    title: "Gypsum Plaster Application Service",
+    subtitle: "Professional on-site execution",
     description:
-      "Import-backed inventory of tested gypsum grades, batch traceability, and documentation for spec-driven projects.",
+      "Trained labour teams for machine and manual gypsum plaster application — delivering smooth, paint-ready walls with disciplined site supervision.",
+    highlights: [
+      "Professional labour team",
+      "Machine & manual application",
+      "Smooth finishing to spec",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "supply",
+    title: "Material Supply Solution",
+    subtitle: "For builders, dealers & contractors",
+    description:
+      "Bulk premium gypsum plaster supply with batch traceability, quality assurance, and timely delivery aligned to your project schedule.",
+    highlights: ["Bulk gypsum supply", "Quality-tested material", "Timely delivery"],
+    audience: "Builders · Dealers · Contractors",
     image:
       "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    name: "Global Sourcing & Import / Export",
+    id: "complete",
+    title: "Complete Project Solution",
+    subtitle: "Material + skilled application",
     description:
-      "Structured procurement, compliance, and customs-aware movement of bulk material for large rollouts.",
+      "End-to-end gypsum programme — from material dispatch through application crews to final QA sign-off on your site.",
+    highlights: [
+      "Material + labour combined",
+      "Single point of accountability",
+      "Paint-ready handover",
+    ],
     image:
-      "https://images.unsplash.com/photo-1587293852726-70cdb56c0866?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+export const gypsumProducts: GypsumProduct[] = [
+  {
+    name: "Prime Gypsum Plaster",
+    tagline: "Flagship interior plaster",
+    description:
+      "Premium-grade gypsum plaster for internal walls and ceilings — smooth finish, fast drying, paint-ready surfaces.",
+    image:
+      "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80",
+    specs: ["Smooth white finish", "72-hour dry cycle", "No water curing"],
   },
   {
-    name: "Logistics & Just-in-Time Delivery",
+    name: "Prime Moisture Shield",
+    tagline: "Enhanced protection",
     description:
-      "Demand-aligned dispatch, site-slot coordination, and reduced stock-out risk across multi-tower programmes.",
+      "Gypsum formulation engineered for areas requiring additional moisture resistance — bathrooms, kitchens, and coastal zones.",
     image:
-      "https://images.unsplash.com/photo-1578575437130-c9d3d6ceb7c4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80",
+    specs: ["Moisture-resistant formula", "Mould prevention", "Durable substrate"],
   },
   {
-    name: "Warehouse & QC Assurance",
+    name: "Prime Machine Grade",
+    tagline: "High-volume application",
     description:
-      "Climate-aware storage protocols and pre-dispatch checks so every bag meets your site-ready standard.",
+      "Optimized mix for spray-machine application on large residential and commercial programmes.",
     image:
       "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+    specs: ["Machine-compatible", "High daily output", "Consistent batch quality"],
   },
 ];
 
 export const gypsumVsCement = [
-  { metric: "Drying Time", gypsum: "72 hours", cement: "7-14 days" },
+  { metric: "Drying Time", gypsum: "72 hours", cement: "7–14 days" },
   { metric: "Water Curing", gypsum: "Not required", cement: "Required daily" },
-  { metric: "Finish Quality", gypsum: "Smooth, paint-ready", cement: "Needs putty and rework" },
-  { metric: "Labor Productivity", gypsum: "Higher output/day", cement: "Lower output/day" },
+  { metric: "Finish Quality", gypsum: "Smooth, paint-ready", cement: "Needs putty & rework" },
+  { metric: "Labour Output", gypsum: "Higher sq ft/day", cement: "Lower sq ft/day" },
 ];
 
-export const caseStudies = [
-  {
-    slug: "skyline-residences",
-    project: "Skyline Residences, Pune",
-    problem: "Wall finishing delays were pushing handover by 6 weeks.",
-    solution: "Shifted 1.8 lakh sq ft from cement plaster to premium gypsum with dedicated application crews.",
-    result: "Project recovered 34 days and saved INR 42 lakhs in labor + finishing.",
-    image:
-      "https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    slug: "vertex-it-park",
-    project: "Vertex IT Park, Hyderabad",
-    problem: "High water usage and repaint defects from uneven wall finish.",
-    solution: "Adopted gypsum system with Dropshore-supplied material and on-site QA sign-off per floor.",
-    result: "Cut water use by 61% and reduced snag list by 47% at final QA.",
-    image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
-  },
+/** Published case studies — empty until real projects are documented */
+export const publishedCaseStudies: CaseStudyTemplate[] = [];
+
+/** Template showing future case study structure (UI preview only) */
+export const caseStudyLayoutPreview: CaseStudyTemplate = {
+  slug: "preview-template",
+  location: "City, State",
+  projectType: "Residential / Commercial",
+  areaCovered: "— sq ft",
+  clientStoryPrompt: "Why they chose Prime Construction gypsum",
+  phases: [
+    {
+      phase: "before",
+      label: "Before Construction",
+      description: "Raw walls, cement substrate, or pre-plaster stage",
+    },
+    {
+      phase: "process",
+      label: "Gypsum Application",
+      description: "Actual gypsum plaster work — not cement",
+    },
+    {
+      phase: "after",
+      label: "Final Finished Result",
+      description: "Paint-ready premium interior surfaces",
+    },
+  ],
+  published: false,
+};
+
+export const videoTestimonialSlots: VideoTestimonialSlot[] = [
+  { id: "builders", audience: "Builders", placeholder: true },
+  { id: "contractors", audience: "Contractors", placeholder: true },
+  { id: "homeowners", audience: "Homeowners", placeholder: true },
 ];
 
-export const portfolioProjects: PortfolioProject[] = [
-  {
-    title: "Luxury Towers — Full Interior Plaster Programme",
-    location: "Western India",
-    scope: "4.5 lakh sq ft | Gypsum plaster + design feature walls",
-    outcome: "Mirror-smooth finishes; zero plaster-related repaint at handover QA.",
-    image:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Corporate HQ — Lobby & Workplace Ceilings",
-    location: "Hyderabad",
-    scope: "False ceiling grids, acoustic islands, corridor bulkheads",
-    outcome: "Coordinated services above ceiling; delivered in a compressed fit-out window.",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Retail Flagship — Custom Design Wall",
-    location: "Mumbai",
-    scope: "Custom curved substrate, metal reveal integration, premium paint system",
-    outcome: "Architect sign-off on first inspection; brand-standard finish maintained.",
-    image:
-      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Residential Township — Material + Application",
-    location: "Pune",
-    scope: "Bulk gypsum supply + multi-tower application teams",
-    outcome: "JIT material flow from Dropshore network; no tower-level stock-out events.",
-    image:
-      "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Hospital Wing — Hygiene-First Finishes",
-    location: "Bengaluru",
-    scope: "Low-dust application protocol, sealed corridors, QA photo logs",
-    outcome: "Met infection-control contractor requirements with minimal site disruption.",
-    image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Hospitality — Curved Ceilings & Features",
-    location: "Goa",
-    scope: "Complex ceiling transitions, layered gypsum detailing",
-    outcome: "Consistent curves across 120+ keys; reduced snagging prior to soft opening.",
-    image:
-      "https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=1200&q=80",
-  },
-];
-
-export const testimonials = [
-  {
-    name: "Rohit Mehta",
-    role: "Project Head, Urban Grid Builders",
-    quote:
-      "Prime Construct helped us compress our finishing cycle and protect our margin. Their gypsum system performs exactly as promised.",
-  },
-  {
-    name: "Nidhi Kapoor",
-    role: "Principal Architect, NKA Studio",
-    quote:
-      "The finish quality is consistently premium. My clients notice smoother walls and faster possession.",
-  },
+export const videoInterviewPrompts = [
+  "Why did you choose Prime Construction?",
+  "What problem did gypsum solve?",
+  "Experience with our team?",
+  "Final result feedback?",
 ];
 
 export const faqs = [
   {
-    question: "Is gypsum plaster suitable for large residential and commercial projects?",
+    question: "What is gypsum plaster?",
     answer:
-      "Yes. Our gypsum systems are designed for scale and are regularly used in high-volume projects where speed and finish consistency are critical.",
+      "Gypsum plaster is a premium wall-finishing material made from natural gypsum. It is applied as a smooth layer over brick or block walls to create paint-ready interior surfaces — faster and smoother than conventional cement plaster.",
   },
   {
-    question: "Can gypsum plaster reduce or remove putty cost?",
+    question: "Why choose gypsum instead of cement plaster?",
     answer:
-      "In many projects, yes. Because the finish is smoother than conventional cement plaster, putty use is often reduced significantly or eliminated.",
+      "Gypsum dries in ~72 hours without water curing, delivers a mirror-smooth finish that reduces or eliminates putty, and allows higher daily labour output — helping you protect handover dates and margins.",
   },
   {
-    question: "How much faster is gypsum compared to cement plaster?",
+    question: "Is gypsum waterproof?",
     answer:
-      "Typical drying time is around 72 hours, compared to multi-day curing cycles for cement plaster. This helps accelerate handover schedules.",
+      "Standard gypsum plaster is designed for interior dry-zone applications. We offer moisture-shield formulations for bathrooms and kitchens. For external or direct water exposure, consult our team for the right system specification.",
   },
   {
-    question: "Do you provide on-site application and quality support?",
+    question: "Where can gypsum be used?",
     answer:
-      "Yes. Prime Construct teams support contractor onboarding, application best practices, and quality checks during rollout.",
+      "Internal walls and ceilings in residential towers, villas, commercial offices, retail, hospitality, and institutional buildings — anywhere a premium interior finish is required.",
   },
   {
-    question: "Is gypsum plaster aligned with sustainability goals?",
+    question: "Do you provide labour also?",
     answer:
-      "Yes. It removes water curing requirements and reduces site waste, helping teams improve resource efficiency and green-building readiness.",
+      "Yes. Our professional application teams handle machine and manual gypsum plaster work with site supervision, quality checkpoints, and paint-ready handover.",
   },
   {
-    question: "How can we get a project-specific estimate quickly?",
+    question: "Do you supply material only?",
     answer:
-      "Use our cost calculator for an instant estimate, then connect with our team for a project-level recommendation and implementation plan.",
+      "Yes. We supply bulk premium gypsum plaster to builders, dealers, and contractors with quality assurance and timely delivery — without application services if you prefer.",
+  },
+  {
+    question: "How long does application take?",
+    answer:
+      "Application speed depends on area, crew size, and site conditions. Gypsum typically allows significantly faster coverage than cement plaster, with surfaces paint-ready within 72 hours of application.",
   },
 ];
 
@@ -320,36 +336,19 @@ export const sustainabilityHighlights = [
   "Supports indoor comfort through thermal and acoustic performance benefits.",
 ];
 
-/** Legacy gallery items for lightbox grid (optional secondary row) */
-export const galleryItems = [
-  {
-    title: "Before: Rough Cement Surface",
-    category: "Before",
-    image:
-      "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "After: Gypsum Smooth Finish",
-    category: "After",
-    image:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Site Application in Progress",
-    category: "Application",
-    image:
-      "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=1200&q=80",
-  },
-];
-
-export const serviceOptionsForForm = [
-  "Material supply",
-  "Professional application",
-  "False ceiling solution",
-  "Design / custom wall",
-  "Consultation only",
+export const projectTypeOptionsForForm = [
+  "Residential villa / apartment",
+  "Residential township / tower",
+  "Commercial office",
+  "Retail / hospitality",
+  "Material supply only",
+  "Application service only",
+  "Complete project (material + labour)",
   "Other",
 ];
+
+/** @deprecated Use projectTypeOptionsForForm — kept for API backward compatibility */
+export const serviceOptionsForForm = projectTypeOptionsForForm;
 
 export const jobs = [
   {

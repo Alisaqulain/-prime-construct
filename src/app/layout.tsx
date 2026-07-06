@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CursorGlow } from "@/components/cursor-glow";
 import { SiteBackground } from "@/components/site-background";
-import { StickyQuote } from "@/components/sticky-quote";
+import { FloatingActions } from "@/components/floating-actions";
 import { AlertProvider } from "@/components/modern-alerts";
 import { SmartPopup } from "@/components/smart-popup";
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | PRIME CONSTRUCT",
   },
   description:
-    "Premium gypsum plastering for construction teams: import-backed material supply, professional application, and Dropshore-aligned logistics.",
+    "Premium gypsum plaster solutions for builders, contractors and modern homes — material supply and professional application.",
   keywords: [
     "gypsum plaster India",
     "gypsum vs cement plaster",
@@ -49,6 +49,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0A0A0A",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,11 +72,11 @@ export default function RootLayout({
           <SiteBackground />
           <CursorGlow />
           <SiteHeader />
-          <main className="relative z-10 pt-18">{children}</main>
+          <main className="relative z-10 pt-[4.5rem] md:pt-18">{children}</main>
           <div className="relative z-10">
             <SiteFooter />
           </div>
-          <StickyQuote />
+          <FloatingActions />
           <SmartPopup />
         </AlertProvider>
       </body>

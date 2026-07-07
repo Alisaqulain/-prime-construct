@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { heroVisualStories } from "@/lib/data";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.1 * i, duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { delay: 0.08 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -29,17 +29,17 @@ export function HeroSection() {
   const story = heroVisualStories[activeStory];
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden">
+    <section className="relative overflow-hidden md:min-h-[100dvh]">
       <div className="absolute inset-0 bg-[#0A0A0A]" />
 
       <AnimatePresence mode="wait">
         <motion.div
           key={story.image}
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.06 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
             src={story.image}
@@ -52,24 +52,18 @@ export function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/88 via-black/80 to-[#0A0A0A] md:bg-gradient-to-r md:from-black/92 md:via-black/78 md:to-black/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/92 via-black/85 to-[#0A0A0A] md:bg-gradient-to-r md:from-black/92 md:via-black/78 md:to-black/45" />
       <motion.div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_50%,rgba(212,175,55,0.12),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_20%,rgba(212,175,55,0.14),transparent_65%)] md:bg-[radial-gradient(ellipse_70%_50%_at_20%_50%,rgba(212,175,55,0.12),transparent_60%)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.4 }}
+        transition={{ duration: 1.2 }}
       />
 
-      <div className="section-shell relative z-10 flex min-h-[100dvh] flex-col justify-center pb-28 pt-24 sm:pb-32 md:py-28 lg:pb-28">
-        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div>
-            <motion.p
-              custom={0}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="premium-label"
-            >
+      <div className="section-shell relative z-10 pt-[5.25rem] pb-10 sm:pt-24 sm:pb-14 md:flex md:min-h-[100dvh] md:flex-col md:justify-center md:py-28">
+        <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+          <div className="max-w-xl md:max-w-2xl">
+            <motion.p custom={0} initial="hidden" animate="show" variants={fadeUp} className="premium-label">
               Premium Gypsum Plaster
             </motion.p>
 
@@ -78,10 +72,10 @@ export function HeroSection() {
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="mt-3 max-w-2xl font-[family-name:var(--font-montserrat)] text-[1.65rem] font-bold leading-[1.16] tracking-tight sm:text-[1.85rem] md:text-4xl lg:text-[2.75rem] xl:text-5xl"
+              className="page-title mt-3 max-w-none"
             >
-              Premium Gypsum Solutions For{" "}
-              <span className="gold-gradient">Stronger, Smoother Walls</span>
+              <span className="block text-white">Premium Gypsum Solutions For</span>
+              <span className="gold-gradient mt-1 block sm:mt-1.5">Stronger, Smoother Walls</span>
             </motion.h1>
 
             <motion.p
@@ -89,7 +83,7 @@ export function HeroSection() {
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/82 sm:text-base md:mt-5 md:text-lg"
+              className="page-lead mt-4 max-w-none sm:mt-5"
             >
               Advanced gypsum plaster solutions for builders, contractors and modern homes.
             </motion.p>
@@ -99,89 +93,63 @@ export function HeroSection() {
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3"
+              className="mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:gap-3"
             >
-              <Link
-                href="/solutions"
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3.5 text-sm font-semibold text-black shadow-lg shadow-[#D4AF37]/25 active:scale-[0.98] sm:w-auto"
-              >
+              <Link href="/solutions" className="btn-primary w-full sm:w-auto">
                 Explore Solutions
                 <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/contact#lead-form"
-                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/35 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm active:scale-[0.98] sm:w-auto"
-              >
+              <Link href="/contact#lead-form" className="btn-secondary w-full sm:w-auto">
                 Contact Expert
               </Link>
             </motion.div>
+          </div>
 
-            {/* Mobile visual card */}
-            <motion.div
-              custom={4}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-6 overflow-hidden rounded-2xl border border-white/12 lg:hidden"
-            >
-              <div className="relative aspect-[16/10]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={story.image}
-                    className="absolute inset-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Image src={story.image} alt="" fill className="object-cover" sizes="100vw" />
-                  </motion.div>
-                </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#D4AF37]">{story.label}</p>
-                  <p className="mt-1 text-sm font-medium leading-snug text-white">{story.caption}</p>
-                </div>
+          {/* Mobile + tablet visual card */}
+          <motion.div
+            custom={4}
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            className="overflow-hidden rounded-2xl border border-white/12 lg:hidden"
+          >
+            <div className="relative aspect-[16/9] sm:aspect-[16/10]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={story.image}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Image src={story.image} alt="" fill className="object-cover" sizes="100vw" />
+                </motion.div>
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-[#D4AF37] sm:tracking-[0.2em]">
+                  {story.label}
+                </p>
+                <p className="mt-1 text-[13px] font-medium leading-snug text-white sm:text-sm">{story.caption}</p>
               </div>
-              <div className="flex gap-1.5 overflow-x-auto bg-black/70 p-2 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {heroVisualStories.map((item, i) => (
-                  <button
-                    key={item.label}
-                    type="button"
-                    onClick={() => setActiveStory(i)}
-                    className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-lg transition ${
-                      i === activeStory ? "ring-2 ring-[#D4AF37]" : "opacity-55"
-                    }`}
-                  >
-                    <Image src={item.image} alt="" fill className="object-cover" sizes="48px" />
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              custom={5}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="story-pill-strip mt-6 hidden md:flex"
-            >
+            </div>
+            <div className="flex gap-1.5 overflow-x-auto bg-black/75 p-2 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {heroVisualStories.map((item, i) => (
                 <button
                   key={item.label}
                   type="button"
                   onClick={() => setActiveStory(i)}
-                  className={`rounded-full px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wider transition ${
-                    i === activeStory
-                      ? "bg-[#D4AF37] text-black"
-                      : "border border-white/20 bg-black/40 text-white/70 hover:border-white/35"
+                  aria-label={item.label}
+                  className={`relative h-11 w-11 shrink-0 overflow-hidden rounded-lg transition sm:h-12 sm:w-12 ${
+                    i === activeStory ? "ring-2 ring-[#D4AF37]" : "opacity-50"
                   }`}
                 >
-                  {item.label}
+                  <Image src={item.image} alt="" fill className="object-cover" sizes="48px" />
                 </button>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
           {/* Desktop visual panel */}
           <motion.div
@@ -226,17 +194,25 @@ export function HeroSection() {
                 ))}
               </div>
             </div>
+
+            <div className="story-pill-strip mt-6">
+              {heroVisualStories.map((item, i) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => setActiveStory(i)}
+                  className={`rounded-full px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wider transition ${
+                    i === activeStory
+                      ? "bg-[#D4AF37] text-black"
+                      : "border border-white/20 bg-black/40 text-white/70 hover:border-white/35"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </motion.div>
         </div>
-
-        <motion.div
-          className="mt-8 hidden items-center gap-2 text-sm text-white/55 sm:flex lg:mt-16"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown size={16} className="text-[#D4AF37]" />
-          Scroll to explore
-        </motion.div>
       </div>
     </section>
   );

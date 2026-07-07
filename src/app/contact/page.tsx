@@ -36,15 +36,15 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="section-shell py-16 sm:py-20 md:py-28">
+    <section className="page-shell">
       <p className="premium-label">Contact</p>
-      <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">Talk to a gypsum expert</h1>
-      <p className="mt-4 max-w-2xl text-base text-white/75 sm:mt-5 sm:text-lg">
+      <h1 className="page-title mt-4">Talk to a gypsum expert</h1>
+      <p className="page-lead mt-4 max-w-2xl sm:mt-5">
         Share your project type and location — we will respond with material options, application
         availability, and indicative timelines.
       </p>
 
-      <div className="mt-14 grid gap-12 lg:grid-cols-[1.15fr_minmax(0,0.95fr)]">
+      <div className="mt-10 grid gap-8 sm:mt-14 sm:gap-12 lg:grid-cols-[1.15fr_minmax(0,0.95fr)]">
         <form id="lead-form" onSubmit={onSubmit} className="glass-card space-y-4 p-5 sm:p-6 md:p-8 scroll-mt-[5.5rem]">
           <h2 className="text-lg font-semibold text-white">Quick enquiry</h2>
           <p className="text-xs text-white/50">Fields marked * are required.</p>
@@ -104,7 +104,7 @@ export default function ContactPage() {
 
           <button
             disabled={sending}
-            className="button-modern w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
+            className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
           >
             {sending ? "Submitting…" : "Talk to Gypsum Expert"}
           </button>

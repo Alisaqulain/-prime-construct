@@ -49,22 +49,22 @@ export function FloatingActions() {
             className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-black/92 backdrop-blur-xl md:hidden"
             style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
           >
-            <div className="grid grid-cols-2 gap-2 p-2.5">
+            <div className="grid grid-cols-2 gap-2 p-2">
               <Link
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl bg-[#25D366] text-sm font-semibold text-black active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-[#25D366] text-[13px] font-semibold text-black active:scale-[0.98]"
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={17} />
                 WhatsApp
               </Link>
               <Link
                 href="/contact#lead-form"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-[#D4AF37]/55 bg-[#D4AF37]/10 text-sm font-semibold text-[#D4AF37] active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-[#D4AF37]/55 bg-[#D4AF37]/10 text-[13px] font-semibold text-[#D4AF37] active:scale-[0.98]"
               >
-                <PhoneCall size={16} />
-                Talk to Expert
+                <PhoneCall size={15} />
+                Expert
               </Link>
             </div>
           </motion.div>

@@ -54,19 +54,19 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="relative">
-      <section className="section-shell border-b border-white/10 py-16 sm:py-20 md:py-28">
+      <section className="section-shell border-b border-white/10 py-14 sm:py-16 md:py-28">
         <p className="premium-label">Case Studies</p>
-        <h1 className="mt-4 max-w-3xl text-3xl font-bold sm:text-4xl md:text-5xl">
+        <h1 className="page-title mt-4 max-w-3xl">
           {hasPublished ? "Real project stories" : "Real Project Stories Coming Soon"}
         </h1>
-        <p className="mt-5 max-w-2xl text-lg text-white/70">
+        <p className="page-lead mt-4 max-w-2xl sm:mt-5">
           {hasPublished
             ? "Documented gypsum projects with before, application process, and finished results."
             : "We are documenting live gypsum plaster projects — with video proof at every stage so you can see it is not cement."}
         </p>
       </section>
 
-      <section className="section-shell py-16 md:py-24">
+      <section className="section-shell mobile-section">
         {!hasPublished && (
           <motion.div
             initial={{ opacity: 0, y: 24 }}

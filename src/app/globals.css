@@ -4,7 +4,7 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
   --header-h: 4.5rem;
-  --mobile-dock-h: 4.25rem;
+  --mobile-dock-h: 3.75rem;
 }
 
 @theme inline {
@@ -43,10 +43,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  text-wrap: balance;
 }
 
 .section-shell {
-  @apply mx-auto max-w-7xl px-4 sm:px-5 md:px-8;
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-5 md:px-8;
 }
 
 .glass-card {
@@ -69,6 +70,32 @@ h6 {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ——— Mobile-first typography & layout ——— */
+.premium-label {
+  @apply text-[10px] font-semibold uppercase tracking-[0.22em] text-[#D4AF37] sm:text-xs sm:tracking-[0.32em];
+}
+
+.page-title {
+  @apply font-[family-name:var(--font-montserrat)] text-[1.5rem] font-bold leading-[1.22] tracking-tight sm:text-[1.85rem] md:text-4xl lg:text-5xl;
+}
+
+.page-lead {
+  @apply text-[15px] leading-relaxed text-white/78 sm:text-base md:text-lg;
+}
+
+.section-title {
+  @apply text-[1.35rem] font-bold leading-tight sm:text-2xl md:text-3xl lg:text-4xl;
+}
+
+.page-shell {
+  @apply mx-auto w-full max-w-7xl px-4 py-14 sm:px-5 sm:py-16 md:px-8 md:py-28;
+}
+
+.mobile-section {
+  @apply py-12 sm:py-16 md:py-24;
+}
+
+/* ——— Buttons ——— */
 .input-modern {
   @apply w-full rounded-xl border border-white/15 bg-white/5 px-3 py-3 text-base text-white outline-none transition;
   @apply placeholder:text-white/40 hover:border-white/25 focus:border-[#D4AF37]/60 focus:bg-white/10 focus:ring-2 focus:ring-[#D4AF37]/20;
@@ -80,13 +107,21 @@ h6 {
   }
 }
 
-.button-modern {
-  @apply rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition;
+.button-modern,
+.btn-primary {
+  @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition active:scale-[0.98];
   @apply hover:-translate-y-0.5 hover:brightness-110 hover:shadow-lg hover:shadow-[#D4AF37]/30;
 }
 
+.btn-secondary {
+  @apply inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/35 bg-white/8 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition active:scale-[0.98];
+  @apply hover:border-[#D4AF37]/55 hover:bg-white/14;
+}
+
 @media (min-width: 768px) {
-  .button-modern {
+  .button-modern,
+  .btn-primary,
+  .btn-secondary {
     @apply py-2.5;
   }
 }
@@ -95,13 +130,9 @@ h6 {
   @apply mx-auto max-w-[90rem] px-4 sm:px-5 md:px-10;
 }
 
-.premium-label {
-  @apply text-[10px] font-semibold uppercase tracking-[0.28em] text-[#D4AF37] sm:text-xs sm:tracking-[0.35em];
-}
-
 /* Horizontal scroll rows — mobile carousels */
 .mobile-scroll-row {
-  @apply -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:-mx-5 sm:px-5 md:mx-0 md:grid md:snap-none md:overflow-visible md:px-0 md:pb-0;
+  @apply -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:-mx-5 sm:gap-4 sm:px-5 md:mx-0 md:grid md:snap-none md:overflow-visible md:px-0 md:pb-0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -111,31 +142,19 @@ h6 {
 }
 
 .mobile-scroll-item {
-  @apply w-[82vw] max-w-[320px] shrink-0 snap-center sm:w-[70vw] md:w-auto md:max-w-none md:shrink;
+  @apply w-[min(82vw,300px)] shrink-0 snap-center sm:w-[min(70vw,320px)] md:w-auto md:max-w-none md:shrink;
 }
 
-/* Story pill strip */
 .story-pill-strip {
-  @apply -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 md:mx-0 md:flex-wrap md:overflow-visible md:px-0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  @apply flex flex-wrap gap-2;
 }
 
-.story-pill-strip::-webkit-scrollbar {
-  display: none;
-}
-
-.story-pill-strip button {
-  @apply shrink-0 snap-start;
-}
-
-/* Comparison table → cards on mobile */
 .compare-cards {
   @apply grid gap-3 md:hidden;
 }
 
 .compare-table-wrap {
-  @apply hidden overflow-x-auto md:block;
+  @apply hidden md:block;
 }
 
 .compare-card {
@@ -144,4 +163,8 @@ h6 {
 
 .safe-bottom {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0.75rem));
+}
+
+.footer-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
 }

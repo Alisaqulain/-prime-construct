@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* What is gypsum — instant clarity */}
       <motion.section
-        className="section-shell py-16 md:py-24"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
@@ -52,8 +52,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-[#D4AF37] sm:tracking-[0.3em]">What we do</p>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+            <p className="premium-label">What we do</p>
+            <h2 className="section-title mt-3">
               Gypsum plaster that solves your wall finishing problems
             </h2>
             <p className="mt-5 text-white/75 leading-relaxed">
@@ -77,7 +77,7 @@ export default function Home() {
 
       {/* Solutions preview */}
       <motion.section
-        className="section-shell py-16 md:py-24"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
@@ -85,8 +85,8 @@ export default function Home() {
       >
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-[#D4AF37] sm:tracking-[0.3em]">Solutions</p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl md:text-4xl">Three ways we work with you</h2>
+            <p className="premium-label">Solutions</p>
+            <h2 className="section-title mt-2">Three ways we work with you</h2>
             <p className="mt-3 max-w-2xl text-white/70">
               Application service, material supply, or complete project delivery — choose what fits your
               programme.
@@ -145,7 +145,7 @@ export default function Home() {
 
       {/* Products teaser */}
       <motion.section
-        className="section-shell py-16 md:py-20"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
@@ -184,7 +184,7 @@ export default function Home() {
 
       {/* Value + comparison */}
       <motion.section
-        className="section-shell py-16 md:py-20"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
@@ -256,15 +256,15 @@ export default function Home() {
 
       {/* Case studies preview — empty state */}
       <motion.section
-        className="section-shell py-16 md:py-24"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
         <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">Case studies</p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">Real Project Stories Coming Soon</h2>
+          <p className="premium-label">Case studies</p>
+          <h2 className="section-title mt-3">Real Project Stories Coming Soon</h2>
           <p className="mx-auto mt-4 max-w-xl text-white/65">
             Documented before, process, and after stories from live gypsum projects — with video proof.
           </p>
@@ -303,15 +303,15 @@ export default function Home() {
 
       {/* FAQ */}
       <motion.section
-        className="section-shell py-16 md:py-24"
+        className="section-shell mobile-section"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={sectionReveal}
       >
         <div className="mx-auto max-w-4xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">FAQ</p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Common questions about gypsum</h2>
+          <p className="premium-label">FAQ</p>
+          <h2 className="section-title mt-2">Common questions about gypsum</h2>
           <div className="mt-8">
             <FaqAccordion items={faqs} />
           </div>
@@ -323,7 +323,7 @@ export default function Home() {
 
       {/* Final CTA */}
       <motion.section
-        className="section-shell pb-16 md:pb-24"
+        className="section-shell pb-20 sm:pb-24 md:pb-28"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}

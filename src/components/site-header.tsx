@@ -50,12 +50,12 @@ export function SiteHeader() {
               priority
             />
           </span>
-          <div className="min-w-0">
-            <p className="truncate text-[9px] font-semibold uppercase tracking-[0.28em] text-white/90 sm:text-[10px] sm:tracking-[0.35em]">
+          <div className="min-w-0 flex-1">
+            <p className="text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] text-white/90 sm:text-[10px] sm:tracking-[0.32em]">
               <span className="text-white">PRIME</span>{" "}
               <span className="text-[#D4AF37]">CONSTRUCT</span>
             </p>
-            <p className="mt-0.5 hidden text-[9px] uppercase tracking-[0.22em] text-white/45 min-[360px]:block sm:tracking-[0.28em]">
+            <p className="mt-0.5 hidden text-[9px] uppercase tracking-[0.2em] text-white/45 min-[380px]:block">
               Premium Gypsum
             </p>
           </div>
